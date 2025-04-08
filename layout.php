@@ -42,7 +42,7 @@ $pageTitle = $pageTitle ?? "Kurs Otomasyonu";
   <!-- Footer -->
   <footer class="bg-gray-800 text-white p-4 mt-auto">
     <div class="container mx-auto text-center">
-      <p class="text-sm">&copy; <?php echo date('Y'); ?> Kurs Otomasyonu. Tüm Hakları Saklıdır.</p>
+      <p class="text-sm">&copy; <?php echo date('Y'); ?> Kurs Otomasyonu. Tüm Hakları Saklıdır Can Karabulut.</p>
     </div>
   </footer>
 
