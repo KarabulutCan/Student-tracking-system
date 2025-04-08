@@ -93,7 +93,7 @@ $courses = $pdo->query("SELECT * FROM courses ORDER BY id DESC")->fetchAll(PDO::
 </form>
 <?php endif; ?>
 
-<!-- Arama Kutusu -->
+<!-- Arama Kutusu (JS ile tablo filtreleme yapmak istersen) -->
 <div class="mb-4">
   <label for="courseSearchInput" class="font-semibold mr-2">Kurslarda Ara:</label>
   <input type="text" id="courseSearchInput" class="border p-2 w-64" placeholder="Kurs adına göre arama..." />
@@ -116,18 +116,17 @@ $courses = $pdo->query("SELECT * FROM courses ORDER BY id DESC")->fetchAll(PDO::
         <td class="p-2"><?php echo htmlspecialchars($c['name']); ?></td>
         <td class="p-2"><?php echo htmlspecialchars($c['description']); ?></td>
         <td class="p-2">
-          <!-- Düzenle -->
+          <!-- DÜZENLE (Sarı Buton) -->
           <a href="courses.php?edit_id=<?php echo $c['id']; ?>"
-             class="text-yellow-500 hover:text-yellow-700 mx-2"
-             title="Düzenle">
-            <i class="fas fa-edit"></i>
+             class="bg-yellow-500 text-white px-3 py-1 rounded mr-2">
+            Düzenle
           </a>
-          <!-- Sil -->
+          
+          <!-- SİL (Kırmızı Buton) -->
           <a href="courses.php?delete_id=<?php echo $c['id']; ?>"
-             class="text-red-500 hover:text-red-700 mx-2"
-             title="Sil"
+             class="bg-red-500 text-white px-3 py-1 rounded"
              onclick="return confirm('Silmek istediğinize emin misiniz?');">
-            <i class="fas fa-trash"></i>
+            Sil
           </a>
         </td>
       </tr>

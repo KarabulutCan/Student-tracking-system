@@ -16,7 +16,6 @@ $pageTitle = $pageTitle ?? "Kurs Otomasyonu";
       integrity="sha512-51HrLTS2JlN/vAOurO6ka8vUAnUZkVj39coST3vGy0yPPmRFNULGjG6LlfveJ+zE/3YSrYpT6WjsffF4RW1VuQ=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
   <!-- Kendimize ait CSS (assets/css/style.css) -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
