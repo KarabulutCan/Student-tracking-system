@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 // 3) Kurs Güncelleme
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'edit') {
     $editId = $_POST['edit_id'];
-    $name = $_POST['name'] ?? '';
-    $desc = $_POST['description'] ?? '';
+    $name   = $_POST['name'] ?? '';
+    $desc   = $_POST['description'] ?? '';
 
     if (!empty($editId) && !empty($name)) {
         $stmt = $pdo->prepare("UPDATE courses SET name=:n, description=:d WHERE id=:id");
@@ -93,8 +93,14 @@ $courses = $pdo->query("SELECT * FROM courses ORDER BY id DESC")->fetchAll(PDO::
 </form>
 <?php endif; ?>
 
+<!-- Arama Kutusu -->
+<div class="mb-4">
+  <label for="courseSearchInput" class="font-semibold mr-2">Kurslarda Ara:</label>
+  <input type="text" id="courseSearchInput" class="border p-2 w-64" placeholder="Kurs adına göre arama..." />
+</div>
+
 <!-- Kurs Listesi -->
-<table class="w-full bg-white rounded shadow border">
+<table id="coursesTable" class="striped w-full bg-white rounded shadow border">
   <thead class="bg-gray-200">
     <tr>
       <th class="p-2 text-left">ID</th>
@@ -105,18 +111,26 @@ $courses = $pdo->query("SELECT * FROM courses ORDER BY id DESC")->fetchAll(PDO::
   </thead>
   <tbody>
     <?php foreach ($courses as $c): ?>
-    <tr class="border-b">
-      <td class="p-2"><?php echo $c['id']; ?></td>
-      <td class="p-2"><?php echo htmlspecialchars($c['name']); ?></td>
-      <td class="p-2"><?php echo htmlspecialchars($c['description']); ?></td>
-      <td class="p-2">
-        <a href="courses.php?edit_id=<?php echo $c['id']; ?>"
-           class="bg-yellow-500 text-white px-3 py-1 rounded mr-2">Düzenle</a>
-        <a href="courses.php?delete_id=<?php echo $c['id']; ?>"
-           class="bg-red-500 text-white px-3 py-1 rounded"
-           onclick="return confirm('Silinsin mi?');">Sil</a>
-      </td>
-    </tr>
+      <tr class="border-b">
+        <td class="p-2"><?php echo $c['id']; ?></td>
+        <td class="p-2"><?php echo htmlspecialchars($c['name']); ?></td>
+        <td class="p-2"><?php echo htmlspecialchars($c['description']); ?></td>
+        <td class="p-2">
+          <!-- Düzenle -->
+          <a href="courses.php?edit_id=<?php echo $c['id']; ?>"
+             class="text-yellow-500 hover:text-yellow-700 mx-2"
+             title="Düzenle">
+            <i class="fas fa-edit"></i>
+          </a>
+          <!-- Sil -->
+          <a href="courses.php?delete_id=<?php echo $c['id']; ?>"
+             class="text-red-500 hover:text-red-700 mx-2"
+             title="Sil"
+             onclick="return confirm('Silmek istediğinize emin misiniz?');">
+            <i class="fas fa-trash"></i>
+          </a>
+        </td>
+      </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
