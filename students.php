@@ -129,7 +129,7 @@ $students = $pdo->query("SELECT * FROM students ORDER BY id DESC")->fetchAll(PDO
            class="bg-yellow-500 text-white px-3 py-1 rounded mr-2">Düzenle</a>
         <a href="students.php?delete_id=<?php echo $st['id']; ?>"
            class="bg-red-500 text-white px-3 py-1 rounded"
-           onclick="return confirm('Silinsin mi?');">Sil</a>
+           onclick="return confirm('Silinsin mi ??');">Sil</a>
       </td>
     </tr>
     <?php endforeach; ?>
